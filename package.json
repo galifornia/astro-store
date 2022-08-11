@@ -14,5 +14,9 @@
     "@astrojs/tailwind": "^1.0.0",
     "astro": "^1.0.2",
     "solid-js": "^1.4.3"
+  },
+  "dependencies": {
+    "@nanostores/solid": "^0.1.6",
+    "nanostores": "^0.6.0"
   }
 }

@@ -3,8 +3,14 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/solid-js': ^1.0.0
   '@astrojs/tailwind': ^1.0.0
+  '@nanostores/solid': ^0.1.6
   astro: ^1.0.2
+  nanostores: ^0.6.0
   solid-js: ^1.4.3
+
+dependencies:
+  '@nanostores/solid': 0.1.6
+  nanostores: 0.6.0
 
 devDependencies:
   '@astrojs/solid-js': 1.0.0_solid-js@1.4.8
@@ -447,6 +453,13 @@ packages:
   /@ljharb/has-package-exports-patterns/0.0.2:
     resolution: {integrity: sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==}
     dev: true
+
+  /@nanostores/solid/0.1.6:
+    resolution: {integrity: sha512-0nX7kUrpy5VAPkrR6S3HY1hPZymd3y/dWNsQ8aUIvXyKiukw/B5x5Hm9jvG4gG9ZjDnRXaYR3KWHeANxkNaTlw==}
+    dependencies:
+      nanostores: 0.5.13
+      solid-js: 1.4.8
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2334,6 +2347,16 @@ packages:
     hasBin: true
     dev: true
 
+  /nanostores/0.5.13:
+    resolution: {integrity: sha512-UxC2eZsCbbcHZ1Z/hwFQ1C4gy8Tkhzskvmu6wOsAhOMAOd72HmVX1Nxs96DSDUcd7V1x0IdRtsl+zAm7rg7slA==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+    dev: false
+
+  /nanostores/0.6.0:
+    resolution: {integrity: sha512-CQpKE8wtaJAr66hbg32t0MOAeybzLywU6UsLAX18kyQL/bME+xwhjWpmrvJRBp5kueFy6hs2oHlt3HFpNP+JaA==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+    dev: false
+
   /nlcst-to-string/2.0.4:
     resolution: {integrity: sha512-3x3jwTd6UPG7vi5k4GEzvxJ5rDA7hVUIRNHPblKuMVP9Z3xmlsd9cgLcpAMkc5uPOBna82EeshROFhsPkbnTZg==}
     dev: true
@@ -2886,7 +2909,6 @@ packages:
 
   /solid-js/1.4.8:
     resolution: {integrity: sha512-XErZdnnYYXF7OwGSUAPcua2y5/ELB/c53zFCpWiEGqxTNoH1iQghzI8EsHJXk06sNn+Z/TGhb8bPDNNGSgimag==}
-    dev: true
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
