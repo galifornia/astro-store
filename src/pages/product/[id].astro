@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export const ids = ["macbook", "iphone", "bananas", "milk"]
+const { id } = Astro.params;
+export async function getStaticPaths() {
+    return ids.map(id => ({ params: { id: id } }))
+}
+---
+
+<Layout title={`Ecommerce | ${id}`}>
+    <div>This is a product page for {id}</div>
+</Layout>
