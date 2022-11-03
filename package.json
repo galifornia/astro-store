@@ -10,13 +10,14 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "^1.0.0",
-    "@astrojs/tailwind": "^1.0.0",
-    "astro": "^1.0.2",
-    "solid-js": "^1.4.3"
+    "@astrojs/solid-js": "^1.2.2",
+    "@astrojs/tailwind": "^2.1.2",
+    "astro": "^1.6.3",
+    "solid-js": "^1.6.1"
   },
   "dependencies": {
-    "@nanostores/solid": "^0.1.6",
-    "nanostores": "^0.6.0"
+    "@nanostores/solid": "^0.3.0",
+    "nanostores": "^0.7.0",
+    "pocketbase": "^0.7.4"
   }
 }
