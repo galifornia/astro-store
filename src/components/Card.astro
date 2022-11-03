@@ -1,0 +1,12 @@
+---
+import Link from './Link.astro';
+
+const { href, title, img, summary, imgAlt } = Astro.props;
+---
+
+<li class='w-full flex flex-col gap-4'>
+  <img class='object-cover h-40' src={img} alt={imgAlt} />
+  <h2 class='font-medium text-2xl'>{title}</h2>
+  <p class='text-sm'>{summary}</p>
+  <Link href={href}>Press me!</Link>
+</li>

@@ -1,23 +1,50 @@
 ---
-import { Link } from '../components/Link';
-import Card from '../components/Card';
+import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="flex flex-col gap-8 max-w-5xl mx-auto">
-		<h1>New store front</h1>
-		<ul role="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-			<Card title="Bananas" img="https://picsum.photos/200/100" imgAlt="Not here" href="/product/bananas"
-				summary="From Canarias, tasty and ripe product" />
-			<Card title="Milk" img="https://picsum.photos/200/200" imgAlt="Not here" href="/product/milk"
-				summary="It is still warm from the cow." />
-			<Card title="Macbook" img="https://picsum.photos/200/300" imgAlt="apple product" href="/product/macbook"
-				summary="Brand new M2 monster" />
-			<Card title="Milk" img="https://picsum.photos/200/120" imgAlt="Not here" href="/product/milk"
-				summary="It is still warm from the cow." />
-			<Card title="Macbook" img="https://picsum.photos/200/110" imgAlt="apple product" href="/product/macbook"
-				summary="Brand new M2 monster" />
-		</ul>
-	</main>
+<Layout title='Welcome to Astro.'>
+  <main class='flex flex-col gap-8 max-w-5xl mx-auto'>
+    <h1>New store front</h1>
+    <ul
+      role='list'
+      class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
+    >
+      <Card
+        title='Bananas'
+        img='https://picsum.photos/200/100'
+        imgAlt='Not here'
+        href='/product/bananas'
+        summary='From Canarias, tasty and ripe product'
+      />
+      <Card
+        title='Milk'
+        img='https://picsum.photos/200/200'
+        imgAlt='Not here'
+        href='/product/milk'
+        summary='It is still warm from the cow.'
+      />
+      <Card
+        title='Macbook'
+        img='https://picsum.photos/200/300'
+        imgAlt='apple product'
+        href='/product/macbook'
+        summary='Brand new M2 monster'
+      />
+      <Card
+        title='Milk'
+        img='https://picsum.photos/200/120'
+        imgAlt='Not here'
+        href='/product/milk'
+        summary='It is still warm from the cow.'
+      />
+      <Card
+        title='Macbook'
+        img='https://picsum.photos/200/110'
+        imgAlt='apple product'
+        href='/product/macbook'
+        summary='Brand new M2 monster'
+      />
+    </ul>
+  </main>
 </Layout>
