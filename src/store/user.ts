@@ -6,8 +6,8 @@ interface User {
   email: string;
 }
 
-export const users = atom<User[]>([]);
+export const userStore = atom<User>();
 
 export function addUser(user: User) {
-  users.set([...users.get(), user]);
+  userStore.set(user);
 }
