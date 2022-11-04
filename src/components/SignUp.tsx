@@ -4,6 +4,7 @@ import PocketBase from 'pocketbase';
 import { useForm } from '../utils/input-validation';
 
 const SignUp = () => {
+  let homeLink;
   const { validate, formSubmit, errors } = useForm({
     errorClass: 'error-input',
   });
@@ -25,6 +26,8 @@ const SignUp = () => {
       });
 
       console.log({ userData });
+      // redirect to Home page
+      homeLink.click();
     } catch (ex) {
       console.log(ex);
     }
@@ -43,52 +46,57 @@ const SignUp = () => {
   const matchesPassword = ({ value }) =>
     value === fields.password ? false : 'Passwords must Match';
   return (
-    <form use:formSubmit={handleSubmit}>
-      <h1>Sign Up</h1>
+    <>
+      <form use:formSubmit={handleSubmit}>
+        <h1>Sign Up</h1>
 
-      <div class='field-block'>
-        <input
-          name='email'
-          type='email'
-          placeholder='Email'
-          required
-          onInput={(e) => setFields('email', e.target.value)}
-          use:validate={[userNameExists]}
-        />
-        {errors.email && <ErrorMessage error={errors.email} />}
-      </div>
+        <div class='field-block'>
+          <input
+            name='email'
+            type='email'
+            placeholder='Email'
+            required
+            onInput={(e) => setFields('email', e.target.value)}
+            use:validate={[userNameExists]}
+          />
+          {errors.email && <ErrorMessage error={errors.email} />}
+        </div>
 
-      <div class='field-block'>
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          required
-          autocomplete='on'
-          minlength='8'
-          onInput={(e) => setFields('password', e.target.value)}
-          use:validate={[]}
-        />
-        {errors.password && <ErrorMessage error={errors.password} />}
-      </div>
+        <div class='field-block'>
+          <input
+            type='password'
+            name='password'
+            placeholder='Password'
+            required
+            autocomplete='on'
+            minlength='8'
+            onInput={(e) => setFields('password', e.target.value)}
+            use:validate={[]}
+          />
+          {errors.password && <ErrorMessage error={errors.password} />}
+        </div>
 
-      <div class='field-block'>
-        <input
-          type='password'
-          name='password_confirmation'
-          placeholder='Confirm Password'
-          autocomplete='on'
-          required
-          onInput={(e) => setFields('password_confirmation', e.target.value)}
-          use:validate={[matchesPassword]}
-        />
-        {errors.password_confirmation && (
-          <ErrorMessage error={errors.password_confirmation} />
-        )}
-      </div>
+        <div class='field-block'>
+          <input
+            type='password'
+            name='password_confirmation'
+            placeholder='Confirm Password'
+            autocomplete='on'
+            required
+            onInput={(e) => setFields('password_confirmation', e.target.value)}
+            use:validate={[matchesPassword]}
+          />
+          {errors.password_confirmation && (
+            <ErrorMessage error={errors.password_confirmation} />
+          )}
+        </div>
 
-      <button type='submit'>Submit</button>
-    </form>
+        <button type='submit'>Submit</button>
+      </form>
+      <a ref={homeLink} href='/' className='hidden'>
+        Home
+      </a>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { ErrorMessage, Fields } from '../utils/forms';
 import { useForm } from '../utils/input-validation';
 
 const LogIn = () => {
+  let homeLink;
   const { validate, formSubmit, errors } = useForm({
     errorClass: 'error-input',
   });
@@ -18,6 +19,8 @@ const LogIn = () => {
       );
 
       console.log({ userData });
+      // redirect to Home page
+      homeLink.click();
     } catch (ex) {
       console.log(ex);
     }
@@ -34,36 +37,42 @@ const LogIn = () => {
   };
 
   return (
-    <form use:formSubmit={handleSubmit}>
-      <h1>Log In</h1>
+    <>
+      <form use:formSubmit={handleSubmit}>
+        <h1>Log In</h1>
 
-      <div class='field-block'>
-        <input
-          name='email'
-          type='email'
-          placeholder='Email'
-          autocomplete='on'
-          required
-          onInput={(e) => setFields('email', e.target.value)}
-        />
-        {errors.email && <ErrorMessage error={errors.email} />}
-      </div>
+        <div class='field-block'>
+          <input
+            name='email'
+            type='email'
+            placeholder='Email'
+            autocomplete='on'
+            required
+            onInput={(e) => setFields('email', e.target.value)}
+          />
+          {errors.email && <ErrorMessage error={errors.email} />}
+        </div>
 
-      <div class='field-block'>
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          autocomplete='on'
-          required
-          onInput={(e) => setFields('password', e.target.value)}
-          use:validate={[]}
-        />
-        {errors.password && <ErrorMessage error={errors.password} />}
-      </div>
+        <div class='field-block'>
+          <input
+            type='password'
+            name='password'
+            placeholder='Password'
+            autocomplete='on'
+            required
+            onInput={(e) => setFields('password', e.target.value)}
+            use:validate={[]}
+          />
+          {errors.password && <ErrorMessage error={errors.password} />}
+        </div>
 
-      <button type='submit'>Submit</button>
-    </form>
+        <button type='submit'>Submit</button>
+      </form>
+
+      <a ref={homeLink} href='/' className='hidden'>
+        Home
+      </a>
+    </>
   );
 };
 
