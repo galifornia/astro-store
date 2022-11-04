@@ -1,14 +1,23 @@
-import { useStore } from '@nanostores/solid';
 import PocketBase from 'pocketbase';
+import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
+
+import { User } from '../store/user';
 import { ErrorMessage, Fields } from '../utils/forms';
 import { useForm } from '../utils/input-validation';
 
 const LogIn = () => {
+  const [state, setState] = createStore<{ user: User | null }>({ user: null });
+
   let homeLink;
   const { validate, formSubmit, errors } = useForm({
     errorClass: 'error-input',
   });
+
+  createEffect(() => {
+    if (localStorage.getItem('app'))
+      setState(JSON.parse(localStorage.getItem('app')));
+  }, []);
 
   const userLogin = async () => {
     try {
@@ -18,7 +27,15 @@ const LogIn = () => {
         fields.password
       );
 
-      console.log({ userData });
+      setState({
+        user: {
+          email: userData.user.email,
+          token: userData.token,
+          id: userData.user.id,
+          name: userData.user.profile.name,
+        },
+      });
+
       // redirect to Home page
       homeLink.click();
     } catch (ex) {
@@ -40,7 +57,7 @@ const LogIn = () => {
     <>
       <form use:formSubmit={handleSubmit}>
         <h1>Log In</h1>
-
+        <p>{state.user && JSON.stringify(state.user)}</p>
         <div class='field-block'>
           <input
             name='email'
@@ -69,7 +86,7 @@ const LogIn = () => {
         <button type='submit'>Submit</button>
       </form>
 
-      <a ref={homeLink} href='/' className='hidden'>
+      <a ref={homeLink} href='/user/signup' className='hidden'>
         Home
       </a>
     </>

@@ -1,10 +1,15 @@
-import { createStore } from 'solid-js/store';
-import { ErrorMessage, Fields, isEmailAlreadyInUse } from '../utils/forms';
 import PocketBase from 'pocketbase';
+import { createEffect } from 'solid-js';
+import { createStore } from 'solid-js/store';
+
+import { User } from '../store/user';
+import { ErrorMessage, Fields, isEmailAlreadyInUse } from '../utils/forms';
 import { useForm } from '../utils/input-validation';
 
 const SignUp = () => {
   let homeLink;
+  const [state, setState] = createStore<{ user: User | null }>({ user: null });
+
   const { validate, formSubmit, errors } = useForm({
     errorClass: 'error-input',
   });
@@ -18,14 +23,12 @@ const SignUp = () => {
   const userSignUp = async () => {
     try {
       const client = new PocketBase('http://127.0.0.1:8090');
-      const userData = await client.users.create({
-        name: 'Banano',
+      await client.users.create({
         email: fields.email,
         password: fields.password,
         passwordConfirm: fields.password_confirmation,
       });
 
-      console.log({ userData });
       // redirect to Home page
       homeLink.click();
     } catch (ex) {
@@ -45,11 +48,17 @@ const SignUp = () => {
 
   const matchesPassword = ({ value }) =>
     value === fields.password ? false : 'Passwords must Match';
+
+  createEffect(() => {
+    if (localStorage.getItem('app'))
+      setState(JSON.parse(localStorage.getItem('app')));
+  }, []);
+
   return (
     <>
       <form use:formSubmit={handleSubmit}>
         <h1>Sign Up</h1>
-
+        <p>{state.user && JSON.stringify(state.user)}</p>
         <div class='field-block'>
           <input
             name='email'
