@@ -1,12 +1,5 @@
 ---
-import PocketBase from 'pocketbase';
 import LogIn from '../../components/LogIn';
-
-const client = new PocketBase('http://127.0.0.1:8090');
-
-const userData = await client.users.authViaEmail('marco@polo.com', 'america10');
-
-console.log({ userData });
 ---
 
 <h1>Login page</h1>
