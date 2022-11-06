@@ -2,7 +2,7 @@ import PocketBase from 'pocketbase';
 import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { User } from '../store/user';
+import { User } from '../types/user';
 import { ErrorMessage, Fields, isEmailAlreadyInUse } from '../utils/forms';
 import { useForm } from '../utils/input-validation';
 
@@ -57,8 +57,6 @@ const SignUp = () => {
   return (
     <>
       <form use:formSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
-        <p>{state.user && JSON.stringify(state.user)}</p>
         <div class='field-block'>
           <input
             name='email'

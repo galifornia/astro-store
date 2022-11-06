@@ -1,18 +1,16 @@
-import { atom } from 'nanostores';
-
-interface Category {
+export interface Category {
   id: string;
   name: string;
 }
 
-interface Review {
+export interface Review {
   title: string;
   author: string;
   body: string;
   date: string;
 }
 
-interface Product {
+export interface Product {
   productId: string;
   title: string;
   description: string;
@@ -22,5 +20,3 @@ interface Product {
   categories: Category[];
   price: number;
 }
-
-export const products = atom<Product[]>([]);
