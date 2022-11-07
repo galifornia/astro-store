@@ -1,6 +1,7 @@
 import PocketBase from 'pocketbase';
 import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { state } from '../store/store';
 
 import { User } from '../types/user';
 import { ErrorMessage, Fields, isEmailAlreadyInUse } from '../utils/forms';
@@ -8,7 +9,6 @@ import { useForm } from '../utils/input-validation';
 
 const SignUp = () => {
   let homeLink;
-  const [state, setState] = createStore<{ user: User | null }>({ user: null });
 
   const { validate, formSubmit, errors } = useForm({
     errorClass: 'error-input',
@@ -50,8 +50,8 @@ const SignUp = () => {
     value === fields.password ? false : 'Passwords must Match';
 
   createEffect(() => {
-    if (localStorage.getItem('app'))
-      setState(JSON.parse(localStorage.getItem('app')));
+    if (localStorage.getItem('app_state'))
+      state.set(JSON.parse(localStorage.getItem('app_state')));
   }, []);
 
   return (

@@ -1,23 +1,17 @@
 import PocketBase from 'pocketbase';
 import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { addUser } from '../store/store';
 
 import { User } from '../types/user';
 import { ErrorMessage, Fields } from '../utils/forms';
 import { useForm } from '../utils/input-validation';
 
 const LogIn = () => {
-  const [state, setState] = createStore<{ user: User | null }>({ user: null });
-
   let homeLink;
   const { validate, formSubmit, errors } = useForm({
     errorClass: 'error-input',
   });
-
-  createEffect(() => {
-    if (localStorage.getItem('app'))
-      setState(JSON.parse(localStorage.getItem('app')));
-  }, []);
 
   const userLogin = async () => {
     try {
@@ -27,13 +21,11 @@ const LogIn = () => {
         fields.password
       );
 
-      setState({
-        user: {
-          email: userData.user.email,
-          token: userData.token,
-          id: userData.user.id,
-          name: userData.user.profile.name,
-        },
+      addUser({
+        email: userData.user.email,
+        token: userData.token,
+        id: userData.user.id,
+        name: userData.user.profile.name,
       });
 
       // redirect to Home page
@@ -84,7 +76,7 @@ const LogIn = () => {
         <button type='submit'>Submit</button>
       </form>
 
-      <a ref={homeLink} href='/user/signup' className='hidden'>
+      <a ref={homeLink} href='/' className='hidden'>
         Home
       </a>
     </>

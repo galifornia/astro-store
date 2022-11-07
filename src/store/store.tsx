@@ -13,9 +13,11 @@ export const state = atom<State>({
   user: null,
 });
 
-export function addUser(u: User) {
-  state.set({ ...state.get(), user: u });
-}
+export const addUser = (u: User) => {
+  const newState = { ...state.get(), user: u };
+  state.set(newState);
+  localStorage.setItem('app_state', JSON.stringify(newState));
+};
 
 export const toggleCart = () =>
   state.set({ ...state.get(), showingCart: !state.get().showingCart });
